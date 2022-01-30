@@ -18,19 +18,12 @@
               Settings
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><%= link_to "Edit profile", edit_user_password_path, class: "dropdown-item"%></li>
+              <li><%= link_to "Edit profile", edit_user_path, class: "dropdown-item"%></li>
               <li><hr class="dropdown-divider"></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: "delete", class: "dropdown-item"%></li>
             </ul>
           </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Sign in", new_user_session_path, class: "nav-link"%>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Sign up", new_user_registration_path, class: "nav-link"%>
-          </li>
-        <% end %>
+        <%end%>
       </ul>
     </div>
   </div>
