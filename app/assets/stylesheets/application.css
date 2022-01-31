@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+/*FORMS*/
+.form-container {
+    max-width: 500px;
+}
+
+.form-link {
+    color: #428bca;
+    text-decoration: none;
+}
