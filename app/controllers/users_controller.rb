@@ -12,13 +12,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update(user_params)
-    redirect_to current_user, notice: "Profile has been successfully updated!"
+    if current_user.update(user_params)
+      flash[:notice] = "Profile has been successfully updated"
+      sign_in(current_user, :bypass => true)
+      redirect_to current_user
+    else
+      flash[:alert] = "Please fill all required fields with valid values"
+      redirect_to edit_user_path(current_user)
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:nickname, :first_name, :last_name, :email, :about, :password, :password_confirmation)
   end
 end
