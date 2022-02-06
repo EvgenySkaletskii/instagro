@@ -10,9 +10,7 @@ describe "User signs up", type: :system do
   end
 
   scenario "with valid data" do
-    fill_in "user_first_name", with: @user.first_name
-    fill_in "user_last_name", with: @user.last_name
-    fill_in "user_nickname", with: "ololo"
+    fill_in "user_full_name", with: @user.full_name
     fill_in "user_email", with: email
     fill_in "user_about", with: @user.about
     fill_in "user_password", with: password
@@ -23,9 +21,7 @@ describe "User signs up", type: :system do
   end
 
   scenario "invalid when email already exists" do
-    fill_in "user_first_name", with: @user.first_name
-    fill_in "user_last_name", with: @user.last_name
-    fill_in "user_nickname", with: @user.nickname
+    fill_in "user_full_name", with: @user.full_name
     fill_in "user_email", with: @user.email
     fill_in "user_about", with: @user.about
     fill_in "user_password", with: @user.password
@@ -38,6 +34,6 @@ describe "User signs up", type: :system do
   scenario "invalid without filling form" do
     find('input[value="Sign up"]').click
     expect(page).to have_no_text "Welcome! You have signed up successfully."
-    expect(page).to have_text "5 errors prohibited this user from being saved:"
+    expect(page).to have_text "3 errors prohibited this user from being saved:"
   end
 end
