@@ -1,11 +1,14 @@
 require "rails_helper"
 
-describe "User signs up", type: :system do
+RSpec.describe "User signs up", type: :system do
   let(:email) { Faker::Internet.email }
   let(:password) { Faker::Internet.password(min_length: 8) }
 
-  before do
-    @user = create :user
+  before(:all) do
+    @user = build :user
+  end
+
+  before(:each) do
     visit new_user_registration_path
   end
 

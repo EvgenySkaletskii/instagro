@@ -1,8 +1,11 @@
 require "rails_helper"
 
-describe "User signs in", type: :system do
-  before do
+RSpec.describe "User signs in", type: :system do
+  before(:all) do
     @user = create :user
+  end
+
+  before(:each) do
     visit new_user_session_path
   end
 
