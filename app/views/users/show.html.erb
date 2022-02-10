@@ -8,8 +8,16 @@
     <%= image_tag avatar_url(@user, 200)%>
   </div>
   <div>
-    <p>Full name: <%= @user.full_name%></p>
+    <h5><%= @user.full_name%></h5>
     <p>Email: <%= @user.email%></p>
     <p>About: <%= @user.about%></p>
   </div>
+</div>
+<div class="col-md-8">
+  <% if @user.posts.any? %>
+    <h5 class="mt-5">Recent posts (<%= @user.posts.count %>)</h5>
+    <div class="list-group posts">
+      <%= render @posts %>
+    </div>
+  <% end %>
 </div>
