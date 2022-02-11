@@ -42,6 +42,11 @@
     @include box_sizing;
 }
 
+/*USER*/
+.user-container {
+    width: 1000px;
+}
+
 /*POSTS*/
 .posts {
     width: 600px;

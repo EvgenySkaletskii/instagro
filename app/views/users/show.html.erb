@@ -1,9 +1,4 @@
-<div class="container d-flex">
-  <div>
-    <p></p>
-  </div>
-</div>
-<div class="d-flex">
+<div class="d-flex user-container w-100">
   <div class="me-5 user-avatar">
     <%= image_tag avatar_url(@user, 200)%>
   </div>
@@ -14,6 +9,9 @@
     <p>Posts count: <%= @user.posts.count %></p>
   </div>
 </div>
+<% if @user == current_user%>
+  <%= render "posts/post_form"%>
+<%end%>
 <div class="col-md-8">
   <% if @user.posts.any? %>
     <h5 class="mt-5">Recent posts:</h5>
