@@ -1,0 +1,11 @@
+<div class="d-flex user-container w-100">
+  <div class="me-5 user-avatar">
+    <%= image_tag avatar_url(current_user, 200)%>
+  </div>
+  <div>
+    <h5><%= current_user.full_name%></h5>
+    <p>Email: <%= current_user.email%></p>
+    <p>About: <%= current_user.about%></p>
+    <p>Posts count: <%= current_user.posts.count %></p>
+  </div>
+</div>

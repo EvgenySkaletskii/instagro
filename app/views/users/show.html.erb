@@ -1,16 +1,6 @@
-<div class="d-flex user-container w-100">
-  <div class="me-5 user-avatar">
-    <%= image_tag avatar_url(@user, 200)%>
-  </div>
-  <div>
-    <h5><%= @user.full_name%></h5>
-    <p>Email: <%= @user.email%></p>
-    <p>About: <%= @user.about%></p>
-    <p>Posts count: <%= @user.posts.count %></p>
-  </div>
-</div>
+<%= render "shared/user_info"%>
 <% if @user == current_user%>
-  <%= render "posts/post_form"%>
+  <%= render "shared/post_form"%>
 <%end%>
 <div class="col-md-8">
   <% if @user.posts.any? %>
