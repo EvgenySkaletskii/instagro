@@ -4,9 +4,9 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = "Post has been successfully created!"
+      flash[:notice] = "Post has been successfully created!"
     else
-      flash[:alert] = "Post was not saved! Please use the correct parameters."
+      flash[:alert] = "Post wasn't saved. The description s empty."
     end
     redirect_to current_user
   end

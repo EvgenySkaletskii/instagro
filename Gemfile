@@ -16,12 +16,6 @@ gem "devise"
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "letter_opener"
-  gem "rspec-rails"
-  gem "shoulda-matchers", "~> 5.0"
-  gem "capybara"
-  gem "database_cleaner-active_record"
-  gem "factory_bot_rails"
-  gem "faker"
 end
 
 group :development do
@@ -34,6 +28,11 @@ end
 group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "rspec-rails"
+  gem "capybara"
+  gem "database_cleaner"
+  gem "factory_bot_rails"
+  gem "faker"
 end
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

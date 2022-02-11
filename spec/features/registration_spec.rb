@@ -1,14 +1,11 @@
 require "rails_helper"
 
-RSpec.describe "User signs up", type: :system do
+RSpec.describe "User signs up", type: :feature do
   let(:email) { Faker::Internet.email }
   let(:password) { Faker::Internet.password(min_length: 8) }
 
-  before(:all) do
-    @user = build :user
-  end
-
   before(:each) do
+    @user = build :user
     visit new_user_registration_path
   end
 
@@ -24,6 +21,7 @@ RSpec.describe "User signs up", type: :system do
   end
 
   scenario "invalid when email already exists" do
+    create :user
     fill_in "user_full_name", with: @user.full_name
     fill_in "user_email", with: @user.email
     fill_in "user_about", with: @user.about

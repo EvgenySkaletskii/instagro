@@ -1,11 +1,8 @@
 require "rails_helper"
 
-RSpec.describe "User signs in", type: :system do
-  before(:all) do
-    @user = create :user
-  end
-
+RSpec.describe "User signs in", type: :feature do
   before(:each) do
+    @user = create :user
     visit new_user_session_path
   end
 
@@ -14,10 +11,10 @@ RSpec.describe "User signs in", type: :system do
     fill_in "user_password", with: @user.password
     click_button "Log in"
     expect(page).to have_text "Signed in successfully."
-    expect(page).to have_current_path("/users/1")
+    expect(current_path).to include("/users/")
     #signed in user should be redirected to users page when opening root
     click_link "Home"
-    expect(page).to have_current_path("/users/1")
+    expect(current_path).to include("/users/")
     #user can logout
     click_on "Settings"
     click_link "Logout"

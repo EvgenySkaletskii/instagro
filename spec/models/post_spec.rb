@@ -1,11 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Post, type: :model do
-  before(:all) do
-    @user = create :user
-  end
-
   before(:each) do
+    @user = create :user
     @post = @user.posts.build(content: "Lorem ipsum")
   end
 
