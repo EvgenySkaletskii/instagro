@@ -1,11 +1,15 @@
-<div class="list-group-item mb-2 border rounded" aria-current="true">
-  <div class="d-flex w-100 mb-2">
-    <%= image_tag avatar_url(@user, 50), class: "me-1 rounded-circle"%>
+<div id="post-<%= post.id%>" class="list-group-item mb-2 border rounded" aria-current="true">
+  <div class="d-flex mb-2">
     <div>
-      <h6 class="mb-1"><%= link_to post.user.full_name, post.user %></h5>
-      <small><%= time_ago_in_words(post.created_at) %> ago</small>
+      <%= image_tag avatar_url(@user, 50), class: "me-3 rounded-circle"%>
+    </div>
+    <div>
+      <h6 class="mb-1"><%= link_to post.user.full_name, post.user, class: "user-link" %></h5>
+      <p class="mb-1"><%= post.content %></p>
+      <small class="text-secondary"><%= time_ago_in_words(post.created_at) %> ago</small>
     </div>
   </div>
-  <p class="mb-1"><%= post.content %></p>
-  <small>Like/Dislike</small>
+  <div class="like-buttons">
+    <small class="align-right">Like/Dislike</small>
+  </div>
 </div>

@@ -42,6 +42,13 @@
     @include box_sizing;
 }
 
+/*POSTS*/
 .posts {
     width: 600px;
+}
+.user-link {
+    text-decoration: none;
+}
+.align-right {
+    float: right;
 }
