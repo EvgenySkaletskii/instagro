@@ -15,7 +15,7 @@
  */
 /*FORMS*/
 .form-container {
-    max-width: 500px;
+    width: 400px;
 }
 
 .form-link {
@@ -25,6 +25,15 @@
 
 .centered {
     margin: auto;
+}
+
+/*COLUMNS*/
+.gap {
+    column-gap: 40px;
+}
+
+.left-column {
+    max-width: 550px;
 }
 
 /*DEBUG*/
@@ -42,14 +51,9 @@
     @include box_sizing;
 }
 
-/*USER*/
-.user-container {
-    width: 1000px;
-}
-
 /*POSTS*/
 .posts {
-    width: 600px;
+    max-width: 700px;
 }
 .user-link {
     text-decoration: none;

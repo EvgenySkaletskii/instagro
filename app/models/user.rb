@@ -7,4 +7,8 @@ class User < ApplicationRecord
 
   validates :full_name, presence: true, length: { maximum: 50 }
   validates :about, length: { maximum: 190 }
+
+  def feed
+    Post.where("user_id = ?", id)
+  end
 end

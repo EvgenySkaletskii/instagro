@@ -1,6 +1,18 @@
 <% if user_signed_in?%>
-  <%= render "shared/user_info"%>
-  <%= render "shared/post_form"%>
+  <div class="row gap">
+    <div class="col left-column">
+      <%= render "shared/user_info"%>
+      <%= render "shared/post_form"%>
+    </div>
+    <div class="col">
+      <% if @feed_items.any? %>
+        <h5>Your personal feed:</h5>
+        <div class="list-group posts">
+          <%= render @feed_items %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 <%else%>
   <%= render "login"%>
 <%end%>

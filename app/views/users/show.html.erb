@@ -1,12 +1,16 @@
-<%= render "shared/user_info"%>
-<% if @user == current_user%>
-  <%= render "shared/post_form"%>
-<%end%>
-<div class="col-md-8">
-  <% if @user.posts.any? %>
-    <h5 class="mt-5">Recent posts:</h5>
-    <div class="list-group posts">
-      <%= render @posts %>
-    </div>
-  <% end %>
+<div class="row gap">
+  <div class="col left-column">
+    <%= render "shared/user_info"%>
+    <% if @user == current_user%>
+      <%= render "shared/post_form"%>
+    <%end%>
+  </div>
+  <div class="col">
+    <% if @user.posts.any? %>
+      <h5>Recent posts:</h5>
+      <div class="list-group posts">
+        <%= render @posts %>
+      </div>
+    <% end %>
+  </div>
 </div>

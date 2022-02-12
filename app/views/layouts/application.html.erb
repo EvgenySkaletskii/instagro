@@ -13,10 +13,8 @@
   <body>
     <%= render "shared/header" %>
     <%= render "shared/flash" %>
-    <div class="container mt-5 d-flex flex-column">
-      <div class="centered">
-        <%= yield %>
-      </div>
+    <div class="container-xxl mt-5 d-flex flex-column">
+      <%= yield %>
       <div class = "centered">
         <%= debug(params) if Rails.env.development? %>
       </div>
