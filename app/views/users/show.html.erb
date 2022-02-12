@@ -1,6 +1,6 @@
 <div class="row gap">
   <div class="col left-column">
-    <%= render "shared/user_info"%>
+    <%= render "shared/user_info", user: current_user%>
     <% if @user == current_user%>
       <%= render "shared/post_form"%>
     <%end%>

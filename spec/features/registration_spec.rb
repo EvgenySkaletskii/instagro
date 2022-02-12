@@ -17,7 +17,7 @@ RSpec.describe "User signs up", type: :feature do
     fill_in "user_password_confirmation", with: password
     find('input[value="Sign up"]').click
     expect(page).to have_content("Welcome! You have signed up successfully.")
-    expect(current_path).to include("/users/")
+    expect(current_path).to include("/feed")
   end
 
   scenario "invalid when email already exists" do

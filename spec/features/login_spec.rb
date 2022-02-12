@@ -11,14 +11,11 @@ RSpec.describe "User signs in", type: :feature do
     fill_in "user_password", with: @user.password
     click_button "Log in"
     expect(page).to have_text "Signed in successfully."
-    expect(current_path).to include("/users/")
-    #signed in user should be redirected to users page when opening root
-    click_link "Home"
-    expect(current_path).to include("/users/")
+    expect(current_path).to include("/feed")
     #user can logout
     click_on "Settings"
     click_link "Logout"
-    expect(page).to have_current_path("/")
+    expect(page).to have_current_path("/feed")
     expect(page).to have_text "Signed out successfully."
     expect(page).to have_link "Sign in"
   end

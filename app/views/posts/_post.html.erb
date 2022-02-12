@@ -1,7 +1,7 @@
 <div id="post-<%= post.id%>" class="list-group-item mb-2 border rounded" aria-current="true">
   <div class="d-flex mb-2">
     <div>
-      <%= image_tag avatar_url(@current_user, 50), class: "me-3 rounded-circle"%>
+      <%= image_tag(gravatar_for(@user, 50), alt: @user.full_name, class: "me-3 rounded-circle")%>
     </div>
     <div>
       <h6 class="mb-1"><%= link_to post.user.full_name, post.user, class: "user-link" %></h5>

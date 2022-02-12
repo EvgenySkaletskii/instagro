@@ -7,6 +7,7 @@ class PageController < ApplicationController
 
   def feed
     if user_signed_in?
+      @user = current_user
       @post = current_user.posts.build if user_signed_in?
       @feed_items = current_user.feed
     end

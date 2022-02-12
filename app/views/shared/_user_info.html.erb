@@ -1,11 +1,11 @@
 <div class="d-flex user-container">
   <div class="me-5 user-avatar">
-    <%= image_tag avatar_url(current_user, 200)%>
+    <%= image_tag(gravatar_for(@user, 200), alt: @user.full_name, class: "me-3")%>
   </div>
   <div>
-    <h5><%= current_user.full_name%></h5>
-    <p>Email: <%= current_user.email%></p>
-    <p>About: <%= current_user.about%></p>
-    <p>Posts count: <%= current_user.posts.count %></p>
+    <h5><%= @user.full_name%></h5>
+    <p>Email: <%= @user.email%></p>
+    <p>About: <%= @user.about%></p>
+    <p>Posts count: <%= @user.posts.count %></p>
   </div>
 </div>
