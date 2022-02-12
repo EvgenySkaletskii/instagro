@@ -10,6 +10,9 @@
         <div class="list-group posts">
           <%= render @feed_items %>
         </div>
+      <%else%>
+        <h5>Your feed is empty</h5>
+        <small>Post something or follow <%= link_to "someone", "#"%> </small>
       <% end %>
     </div>
   </div>
