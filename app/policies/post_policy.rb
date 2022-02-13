@@ -7,6 +7,6 @@ class PostPolicy
   end
 
   def destroy?
-    user.admin? || user.posts.find(post.id)
+    (user.admin? && post.user.posts.count < 10) || user.posts.find_by(id: post.id)
   end
 end

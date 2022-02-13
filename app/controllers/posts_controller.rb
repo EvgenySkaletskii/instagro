@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def create
     @post = current_user.posts.build(post_params)
@@ -23,5 +24,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:content)
+  end
+
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action. The post's owner has more than 10 posts!"
+    redirect_to(request.referrer || root_path)
   end
 end
