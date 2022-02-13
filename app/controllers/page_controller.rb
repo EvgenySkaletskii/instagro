@@ -9,7 +9,12 @@ class PageController < ApplicationController
     if user_signed_in?
       @user = current_user
       @post = current_user.posts.build if user_signed_in?
-      @feed_items = current_user.feed
+      #show posts logic
+      if @user.member?
+        @feed_items = current_user.feed
+      else
+        @feed_items = Post.all
+      end
     end
   end
 end
