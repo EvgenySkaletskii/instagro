@@ -29,10 +29,4 @@ RSpec.describe PostsController, type: :controller do
     end.to_not change { Post.count }
     expect(response).to redirect_to(new_user_session_path)
   end
-
-  it "should allow admins to edit member's post" do
-    sign_in @admin
-    put :update, { id: @post.id, content: "updated content" }
-    expect(response).to be_success
-  end
 end
