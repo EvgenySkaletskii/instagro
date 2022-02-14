@@ -60,7 +60,6 @@ RSpec.describe "Feed page", type: :feature do
     visit feed_path
     click_on class: "delete-post-link"
     expect(page).to have_text("Post has been successfully deleted!")
-    debugger
     expect(page).not_to have_selector(".posts [id ^= 'post']")
   end
 end
