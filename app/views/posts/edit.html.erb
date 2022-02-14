@@ -1,0 +1,11 @@
+<div class="form-container centered">
+  <h2>Update post</h2>
+  <%= form_with model: @post, local: true, html: {class: "form-horizontal"} do |f| %>
+    <div class="field mb-2">
+      <%= f.label :content, class: "form-label" %><br />
+      <%= f.text_field :content, class: "form-control" %>
+      <div class="actions">
+        <%= f.submit "Edit post", class: "btn btn-primary mt-2 mb-2" %>
+      </div>
+    <% end %>
+  </div>

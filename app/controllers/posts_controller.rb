@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :destroy]
+  before_action :authenticate_user!, only: [:create, :destroy, :update]
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def create
@@ -18,6 +18,21 @@ class PostsController < ApplicationController
     @post.destroy
     flash[:notice] = "Post has been successfully deleted!"
     redirect_to request.referrer || feed_path
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    #authorize @post
+    if @post.update(post_params)
+      flash[:notice] = "Post has been successfully updated!"
+    else
+      flash[:alert] = "Incorrect value for post content"
+    end
+    redirect_to feed_path
   end
 
   private

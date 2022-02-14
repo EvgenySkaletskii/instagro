@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   get "/" => redirect("/feed")
   get "/feed", to: "page#feed"
   resources :users, only: [:show, :edit, :update]
-  resources :posts, only: [:create, :destroy]
+  resources :posts, only: [:create, :destroy, :edit, :update]
 end
