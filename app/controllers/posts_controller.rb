@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    #authorize @post
+    authorize @post
     if @post.update(post_params)
       flash[:notice] = "Post has been successfully updated!"
     else
@@ -42,7 +42,7 @@ class PostsController < ApplicationController
   end
 
   def user_not_authorized
-    flash[:alert] = "You are not authorized to perform this action. The post's owner has more than 10 posts!"
+    flash[:alert] = "You are not authorized to perform this action."
     redirect_to(request.referrer || root_path)
   end
 end
