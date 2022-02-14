@@ -34,6 +34,7 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.include Warden::Test::Helpers
   #enable factory bot
   config.include FactoryBot::Syntax::Methods
   #add device helpers

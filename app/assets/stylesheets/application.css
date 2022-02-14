@@ -51,6 +51,7 @@
     float: right;
 }
 
-.icon-link {
+.update-post-link,
+.delete-post-link {
     text-decoration: none;
 }
