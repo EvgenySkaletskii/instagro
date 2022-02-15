@@ -1,7 +1,7 @@
 <% if user_signed_in?%>
   <div class="row gap">
     <div class="col left-column">
-      <%= render "shared/user_info"%>
+      <%= render "shared/user_info", user: @user%>
       <%= render "shared/post_form"%>
     </div>
     <div class="col posts">
