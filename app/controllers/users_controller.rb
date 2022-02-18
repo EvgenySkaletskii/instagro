@@ -24,6 +24,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def followers
+    @user = User.find(params[:id])
+    @title = current_user == @user ? "Your followers:" : "Followers:"
+    @users = @user.followers
+    render "show_follows"
+  end
+
+  def following
+    @title = current_user == @user ? "Your followings:" : "Followings:"
+    @user = User.find(params[:id])
+    @users = @user.following
+    render "show_follows"
+  end
+
   private
 
   def user_params

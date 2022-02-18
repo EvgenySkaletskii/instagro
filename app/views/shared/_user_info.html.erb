@@ -8,8 +8,12 @@
     <p>Role: <%= user.role%></p>
     <p>Posts count: <%= user.posts.count %></p>
     <div class="d-flex text-secondary">
-      <p class="me-2"><%= user.followers.count %> followers</p>
-      <p><%= user.following.count %> following</p>
+      <a href = "<%= followers_user_path(user) %>">
+        <p class="me-2"><%= user.followers.count %> followers</p>
+      </a>
+      <a href = "<%= following_user_path(user) %>">
+        <p><%= user.following.count %> following</p>
+      </a>
     </div>
   </div>
 </div>
