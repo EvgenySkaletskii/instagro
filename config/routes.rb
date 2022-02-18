@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   end
   resources :posts, only: [:create, :destroy, :edit, :update]
   resources :follows, only: [:create, :destroy]
+
+  #errors
+  match "*unmatched", to: "application#route_not_found", via: :all
 end

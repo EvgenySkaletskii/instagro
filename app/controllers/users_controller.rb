@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def index
     @users = User.all
@@ -44,5 +45,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:full_name, :email, :about, :password, :password_confirmation)
+  end
+
+  def record_not_found
+    flash[:alert] = "Please do not type parameters manually"
+    redirect_to feed_path
   end
 end
