@@ -7,14 +7,14 @@
       <h6 class="mb-1"><%= link_to user.full_name || "No name", user, class: "user-link" %></h5>
       <small><%= user.email %></small>
       <div>
-        <small class="me-1"><%= user.posts.count %> posts</small>
-        <small class="me-1"><%= user.followers.count %> followers </small>
-        <small class="me-1"><%= user.following.count %> followed </small>
+        <small class="me-1 text-secondary"><%= user.posts.count %> posts</small>
+        <small class="me-1 text-secondary"><%= user.followers.count %> followers </small>
+        <small class="me-1 text-secondary"><%= user.following.count %> followed </small>
       </div>
     </div>
   </div>
   <small class="text-secondary">Registered <%= time_ago_in_words(user.created_at) %> ago</small>
-  <div class="position-absolute end-0 bottom-0">
-    <button class="btn btn-primary m-2">Follow</button>
+  <div class="position-absolute end-0 bottom-0 m-2">
+    <%= render "shared/follow", user: user%>
   </div>
 </div>
