@@ -1,10 +1,4 @@
 class PageController < ApplicationController
-  # def index
-  #   if signed_in?
-  #     redirect_to home_path
-  #   end
-  # end
-
   def feed
     if user_signed_in?
       @user = current_user
@@ -16,5 +10,8 @@ class PageController < ApplicationController
         @feed_items = Post.all
       end
     end
+  end
+
+  def about
   end
 end

@@ -44,7 +44,7 @@
 .posts {
     max-width: 700px;
 }
-.user-link {
+.simple-link {
     text-decoration: none;
 }
 .align-right {
@@ -54,9 +54,14 @@
 .update-post-link,
 .delete-post-link {
     text-decoration: none;
+    color: black;
 }
 
 /*USERS*/
 .user-card {
     width: 500px;
+}
+
+#follow-button {
+    width: 100px;
 }

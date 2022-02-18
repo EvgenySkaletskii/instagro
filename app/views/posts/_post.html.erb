@@ -19,7 +19,7 @@
       <%= image_tag(gravatar_for(post.user, 50), alt: post.user.full_name, class: "me-3 rounded-circle")%>
     </div>
     <div>
-      <h6 class="mb-1"><%= link_to post.user.full_name, post.user, class: "user-link" %></h5>
+      <h6 class="mb-1"><%= link_to post.user.full_name, post.user, class: "simple-link" %></h5>
       <p class="mb-1"><%= post.content %></p>
     </div>
   </div>

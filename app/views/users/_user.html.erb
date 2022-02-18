@@ -4,7 +4,7 @@
       <%= image_tag(gravatar_for(user, 50), alt: user.full_name, class: "me-3 rounded-circle")%>
     </div>
     <div class="d-flex flex-column">
-      <h6 class="mb-1"><%= link_to user.full_name || "No name", user, class: "user-link" %></h5>
+      <h6 class="mb-1"><%= link_to user.full_name || "No name", user, class: "simple-link" %></h5>
       <small><%= user.email %></small>
       <div>
         <small class="me-1 text-secondary"><%= user.posts.count %> posts</small>
