@@ -5,8 +5,11 @@
   <div>
     <h5><%= user.full_name%></h5>
     <p>Email: <%= user.email%></p>
-    <p>About: <%= user.about%></p>
     <p>Role: <%= user.role%></p>
     <p>Posts count: <%= user.posts.count %></p>
+    <div class="d-flex">
+      <p class="me-2">Followers: <%= user.followers.count %></p>
+      <p>Following: <%= user.following.count %></p>
+    </div>
   </div>
 </div>

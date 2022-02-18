@@ -14,6 +14,13 @@ class User < ApplicationRecord
   #get start (you are follower)
   has_many :following, through: :given_follows, source: :followed
 
+  #get received_follows (you are star)
+  has_many :received_follows, class_name: "Follow",
+                              foreign_key: "followed_id",
+                              dependent: :destroy
+  #get followers (you are star)
+  has_many :followers, through: :received_follows, source: :follower
+
   validates :full_name, presence: true, length: { maximum: 50 }
   validates :about, length: { maximum: 190 }
 
