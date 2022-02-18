@@ -24,6 +24,8 @@ RSpec.describe "User profile page", type: :feature do
     expect(page).to have_selector(".posts [id ^= 'post']", count: 2)
     expect(page).to have_text(@post1.content)
     expect(page).to have_text(@post2.content)
+    #follow button
+    expect(page).not_to have_selector("#follow-button")
   end
 
   it "displays other user stats and posts" do
@@ -54,5 +56,17 @@ RSpec.describe "User profile page", type: :feature do
     expect(page).to have_text("0 following")
     expect(page).to have_text("1 followers")
     expect(page).to have_button("Unfollow")
+  end
+
+  it "allows user to follow and unfollow other user" do
+    login_as(@user)
+    visit user_path(@anton)
+    expect do
+      click_button("Follow")
+    end.to change { @user.following.count }.by(1).and change { @anton.followers.count }.by(1)
+    expect do
+      click_button("Unfollow")
+    end.to change { @user.following.count }.by(-1).and change { @anton.followers.count }.by(-1)
+    expect(page).to have_button("Follow")
   end
 end

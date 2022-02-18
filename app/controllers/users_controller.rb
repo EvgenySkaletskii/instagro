@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def index
-    @users = User.all
+    @users = User.all_except(current_user)
   end
 
   def show

@@ -5,6 +5,7 @@ class User < ApplicationRecord
   enum role: [:member, :manager, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
+  #RELATIONS
   has_many :posts, dependent: :destroy
 
   #get follows (you are follower)
@@ -21,8 +22,12 @@ class User < ApplicationRecord
   #get followers (you are star)
   has_many :followers, through: :received_follows, source: :follower
 
+  #VALIDATIONS
   validates :full_name, presence: true, length: { maximum: 50 }
   validates :about, length: { maximum: 190 }
+
+  #SCOPES
+  scope :all_except, ->(user) { where.not(id: user) }
 
   def set_default_role
     self.role ||= :user
