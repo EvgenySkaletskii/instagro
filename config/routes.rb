@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get "/feed", to: "page#feed"
   resources :users, only: [:show, :edit, :update]
   resources :posts, only: [:create, :destroy, :edit, :update]
+  resources :follows, only: [:create, :destroy]
 end

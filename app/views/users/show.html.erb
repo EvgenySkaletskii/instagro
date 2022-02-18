@@ -7,6 +7,8 @@
     </div>
     <% if @user == current_user%>
       <%= render "shared/post_form"%>
+    <%else%>
+      <%= render "shared/follow", user: @user%>
     <%end%>
   </div>
   <div class="col posts">
@@ -15,6 +17,8 @@
       <div class="list-group posts">
         <%= render @posts %>
       </div>
+    <% else%>
+      <h5>There are no posts from this user</h5>
     <% end %>
   </div>
 </div>
