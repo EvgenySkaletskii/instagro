@@ -55,3 +55,8 @@
 .delete-post-link {
     text-decoration: none;
 }
+
+/*USERS*/
+.user-card {
+    width: 500px;
+}
