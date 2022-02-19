@@ -1,0 +1,11 @@
+<div class="form-container centered">
+  <h2>Update comment</h2>
+  <%= form_with model: @comment, local: true, html: {class: "form-horizontal"} do |f| %>
+    <div class="field mb-2">
+      <%= f.label :content, class: "form-label" %><br />
+      <%= f.text_field :content, class: "form-control" %>
+      <div class="actions">
+        <%= f.submit "Edit comment", class: "btn btn-dark mt-3 mb-2 w-100" %>
+      </div>
+    <% end %>
+  </div>
