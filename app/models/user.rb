@@ -33,8 +33,9 @@ class User < ApplicationRecord
     self.role ||= :user
   end
 
-  def feed
-    Post.where("user_id = ?", id)
+  def feed(user)
+    #Post.where("user_id = ?", id)
+    Post.where(user_id: user.following.ids)
   end
 
   # Follows a user.

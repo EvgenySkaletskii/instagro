@@ -5,7 +5,7 @@ class PageController < ApplicationController
       @post = current_user.posts.build if user_signed_in?
       #show posts logic
       if @user.member?
-        @feed_items = current_user.feed
+        @feed_items = current_user.feed(current_user)
       else
         @feed_items = Post.all
       end
