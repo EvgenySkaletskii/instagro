@@ -2,7 +2,7 @@
   <%= hidden_field_tag :post_id, post.id %>
   <div class="d-flex">
     <div class="field me-3 w-100">
-      <%= f.text_field :content, class: "form-control", placeholder: "Comment...", autocomplete: "off" %>
+      <%= f.text_field :content, class: "form-control comment-field", placeholder: "Comment...", autocomplete: "off" %>
     </div>
     <%= f.submit "Comment", class: "btn btn-dark" %>
   </div>
