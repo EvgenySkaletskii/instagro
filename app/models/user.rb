@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   #RELATIONS
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   #get follows (you are follower)
   has_many :given_follows, class_name: "Follow",

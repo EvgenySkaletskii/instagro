@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
   end
   resources :posts, only: [:create, :destroy, :edit, :update]
+  resources :comments, only: [:create, :destroy, :edit, :update]
   resources :follows, only: [:create, :destroy]
 
   #errors

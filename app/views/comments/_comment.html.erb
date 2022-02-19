@@ -1,12 +1,13 @@
-<div id="post-<%= post.id%>" class="list-group-item mb-2 border rounded" aria-current="true">
-  <% if current_user == post.user || current_user.admin? %>
+<hr class="w-100"/>
+<div id="comment-<%= comment.id%>" class="ms-5" aria-current="true">
+  <% if current_user == comment.user || current_user.admin? %>
     <div class="align-right">
-      <%= link_to edit_post_path(post), class: "me-1 update-post-link" do%>
+      <%= link_to "#", class: "me-1 update-post-link" do%>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
           <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
         </svg>
       <%end%>
-      <%= link_to post, method: :delete, data: { confirm: "You sure?" }, class: "delete-post-link" do%>
+      <%= link_to "#", method: :delete, data: { confirm: "You sure?" }, class: "delete-post-link" do%>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
           <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
@@ -16,21 +17,15 @@
   <% end %>
   <div class="d-flex mb-2">
     <div>
-      <%= image_tag(gravatar_for(post.user, 50), alt: post.user.full_name, class: "me-3 rounded-circle")%>
+      <%= image_tag(gravatar_for(comment.user, 50), alt: comment.user.full_name, class: "me-3 rounded-circle")%>
     </div>
     <div>
-      <h6 class="mb-1"><%= link_to post.user.full_name, post.user, class: "simple-link" %></h5>
-      <p class="mb-1"><%= post.content %></p>
+      <h6 class="mb-1"><%= link_to comment.user.full_name, comment.user, class: "simple-link" %></h5>
+      <p class="mb-1"><%= comment.content %></p>
     </div>
   </div>
   <div class="like-buttons">
-    <small class="text-secondary"><%= time_ago_in_words(post.created_at) %> ago</small>
+    <small class="text-secondary"><%= time_ago_in_words(comment.created_at) %> ago</small>
     <small class="align-right">Like/Dislike</small>
-  </div>
-  <div class="comments-container">
-    <%= render post.comments %>
-  </div>
-  <div class="mt-5 comment-form">
-    <%= render "posts/comment_form", post: post %>
   </div>
 </div>
