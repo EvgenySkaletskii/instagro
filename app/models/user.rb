@@ -35,7 +35,7 @@ class User < ApplicationRecord
 
   def feed(user)
     #Post.where("user_id = ?", id)
-    Post.where(user_id: user.following.ids)
+    Post.where(user_id: user.following.ids << user.id)
   end
 
   # Follows a user.
