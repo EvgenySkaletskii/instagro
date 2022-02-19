@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy, :update]
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def create
     @post = current_user.posts.build(post_params)
@@ -22,6 +21,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    authorize @post
   end
 
   def update
@@ -39,10 +39,5 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:content)
-  end
-
-  def user_not_authorized
-    flash[:alert] = "You are not authorized to perform this action."
-    redirect_to(request.referrer || root_path)
   end
 end

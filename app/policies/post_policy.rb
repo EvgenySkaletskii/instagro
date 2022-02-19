@@ -6,6 +6,10 @@ class PostPolicy
     @post = post
   end
 
+  def edit?
+    (user.admin? && post.user.posts.count < 10) || user.posts.find_by(id: post.id)
+  end
+
   def update?
     (user.admin? && post.user.posts.count < 10) || user.posts.find_by(id: post.id)
   end
