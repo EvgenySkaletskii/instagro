@@ -23,7 +23,7 @@
       <p class="mb-1"><%= post.content %></p>
     </div>
   </div>
-  <div class="footer-container">
+  <div class="post-likes">
     <small class="text-secondary"><%= time_ago_in_words(post.created_at) %> ago</small>
     <%= render "shared/like_buttons", type: post %>
   </div>
