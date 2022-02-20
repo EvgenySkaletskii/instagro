@@ -24,8 +24,8 @@
       <p class="mb-1"><%= comment.content %></p>
     </div>
   </div>
-  <div class="like-buttons">
+  <div class="footer-container">
     <small class="text-secondary"><%= time_ago_in_words(comment.created_at) %> ago</small>
-    <small class="align-right">Like/Dislike</small>
+    <%= render "shared/like_buttons", type: comment %>
   </div>
 </div>

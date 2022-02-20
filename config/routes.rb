@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:create, :destroy, :edit, :update]
   resources :comments, only: [:create, :destroy, :edit, :update]
   resources :follows, only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy]
 
   #errors
   match "*unmatched", to: "application#route_not_found", via: :all

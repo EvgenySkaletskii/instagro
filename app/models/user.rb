@@ -8,6 +8,7 @@ class User < ApplicationRecord
   #RELATIONS
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   #get follows (you are follower)
   has_many :given_follows, class_name: "Follow",
@@ -52,5 +53,10 @@ class User < ApplicationRecord
   # Returns true if the current user is following the other user.
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def liked?(type)
+    #!!type.likes.find { |like| like.user_id == self.id }
+    type.likes.include?(Like.find_by(user_id: self.id, likable_id: type.id))
   end
 end
