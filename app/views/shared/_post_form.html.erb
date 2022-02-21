@@ -4,6 +4,10 @@
     <div class="field mb-2">
       <%= f.text_area :content, class: "form-control", placeholder: "Enter the description..." %>
     </div>
+    <div class="field mb-2">
+      <%= f.hidden_field :image, value: @post.cached_image_data, id: nil %>
+      <%= f.file_field :image %>
+    </div>
     <%= f.submit "Post", class: "btn btn-dark w-100" %>
   <% end %>
 </div>

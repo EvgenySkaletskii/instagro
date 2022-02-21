@@ -51,6 +51,10 @@
     float: right;
 }
 
+.post-image {
+    max-width: 500px;
+}
+
 .update-post-link,
 .delete-post-link {
     text-decoration: none;
