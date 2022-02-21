@@ -4,9 +4,10 @@
     <div class="field mb-2">
       <%= f.text_area :content, class: "form-control", placeholder: "Enter the description..." %>
     </div>
-    <div class="field mb-2">
+    <div class="field mb-3">
       <%= f.hidden_field :image, value: @post.cached_image_data, id: nil %>
-      <%= f.file_field :image %>
+      <label for="formFile" class="form-label">Upload an image to your post</label>
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "form-control", type: "file", id: "formFile" %>
     </div>
     <%= f.submit "Post", class: "btn btn-dark w-100" %>
   <% end %>

@@ -4,6 +4,11 @@
     <div class="field mb-2">
       <%= f.label :content, class: "form-label" %><br />
       <%= f.text_field :content, class: "form-control" %>
+      <div class="field mb-3">
+        <%= f.hidden_field :image, value: @post.cached_image_data, id: nil %>
+        <label for="formFile" class="form-label">Upload an image to your post</label>
+        <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "form-control", type: "file", id: "formFile" %>
+      </div>
       <div class="actions">
         <%= f.submit "Edit post", class: "btn btn-dark mt-3 mb-2 w-100" %>
       </div>
