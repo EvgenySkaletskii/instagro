@@ -21,8 +21,8 @@
     <div>
       <h6 class="mb-1"><%= link_to post.user.full_name, post.user, class: "simple-link" %></h5>
       <p class="mb-1"><%= post.content %></p>
-      <%if post.image_url%>
-        <%= image_tag post.image_url, class: "post-image"%>
+      <%if post.image_url(:medium)%>
+        <%= image_tag post.image_url(:medium), class: "post-image"%>
       <%end%>
     </div>
   </div>
