@@ -13,6 +13,9 @@ gem "jbuilder", "~> 2.7"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "devise"
 gem "pundit"
+gem "shrine", "~> 3.0"
+gem "image_processing", "1.9.3"
+gem "mini_magick", "4.9.5"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
