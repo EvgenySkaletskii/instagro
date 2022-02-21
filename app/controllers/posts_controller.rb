@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     if @post.save
       flash[:notice] = "Post has been successfully created!"
     else
-      flash[:alert] = "Post wasn't saved. The description is empty."
+      flash[:alert] = "Post wasn't saved. #{@post.errors.full_messages.first}"
     end
     redirect_to feed_path
   end
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       flash[:notice] = "Post has been successfully updated!"
     else
-      flash[:alert] = "Incorrect value for post content"
+      flash[:alert] = "Post wasn't saved. #{@post.errors.full_messages.first}"
     end
     redirect_to feed_path
   end
