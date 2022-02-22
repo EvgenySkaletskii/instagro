@@ -35,9 +35,9 @@ class User < ApplicationRecord
     self.role ||= :user
   end
 
-  def feed(user)
+  def feed
     #Post.where("user_id = ?", id)
-    Post.where(user_id: user.following.ids << user.id)
+    Post.where(user_id: following.ids << id)
   end
 
   # Follows a user.
@@ -57,6 +57,6 @@ class User < ApplicationRecord
 
   def liked?(type)
     #!!type.likes.find { |like| like.user_id == self.id }
-    type.likes.include?(Like.find_by(user_id: self.id, likable_id: type.id))
+    type.likes.include?(Like.find_by(user_id: id, likable_id: type.id))
   end
 end
