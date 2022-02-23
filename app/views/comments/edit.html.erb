@@ -1,6 +1,7 @@
 <div class="form-container centered">
   <h2>Update comment</h2>
   <%= form_with model: @comment, local: true, html: {class: "form-horizontal"} do |f| %>
+    <%= f.hidden_field :post_id, value: @comment.post_id %>
     <div class="field mb-2">
       <%= f.label :content, class: "form-label" %><br />
       <%= f.text_field :content, class: "form-control" %>

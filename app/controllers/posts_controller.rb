@@ -13,21 +13,19 @@ class PostsController < ApplicationController
   end
 
   def edit
-    authorize @post
   end
 
   def update
-    authorize @post
     if @post.update(post_params)
       flash[:notice] = "Post has been successfully updated!"
+      redirect_to feed_path
     else
       flash[:alert] = "Post wasn't saved. #{@post.errors.full_messages.first}"
+      redirect_to edit_post_path(@post)
     end
-    redirect_to feed_path
   end
 
   def destroy
-    authorize @post
     @post.destroy
     flash[:notice] = "Post has been successfully deleted!"
     redirect_to request.referrer || feed_path
@@ -37,6 +35,7 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+    authorize @post
   end
 
   def post_params

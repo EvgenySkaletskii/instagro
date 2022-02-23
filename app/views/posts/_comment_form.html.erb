@@ -1,5 +1,5 @@
 <%= form_with(model: @comment, url: "/comments", local: true) do |f| %>
-  <%= hidden_field_tag :post_id, post.id %>
+  <%= f.hidden_field :post_id, value: post.id %>
   <div class="d-flex">
     <div class="field me-3 w-100">
       <%= f.text_field :content, class: "form-control comment-field", placeholder: "Comment...", autocomplete: "off" %>
