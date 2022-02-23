@@ -19,8 +19,8 @@ RSpec.describe "Verify comments: ", type: :feature do
     end.to change { Comment.count }.by(1)
     expect(page).to have_text("Comment#2")
     expect(page).to have_selector("[id ^= 'comment']", count: 2)
-    expect(page).to have_selector("[id ^= 'comment'] .update-post-link", count: 2)
-    expect(page).to have_selector("[id ^= 'comment'] .delete-post-link", count: 2)
+    expect(page).to have_selector("[id ^= 'comment'] .update-link", count: 2)
+    expect(page).to have_selector("[id ^= 'comment'] .delete-link", count: 2)
   end
 
   it "user can create a comment to user's post" do
@@ -33,14 +33,14 @@ RSpec.describe "Verify comments: ", type: :feature do
     end.to change { Comment.count }.by(1)
     expect(page).to have_text("Comment#2")
     expect(page).to have_selector("[id ^= 'comment']", count: 2)
-    expect(page).to have_selector("[id ^= 'comment'] .update-post-link", count: 1)
-    expect(page).to have_selector("[id ^= 'comment'] .delete-post-link", count: 1)
+    expect(page).to have_selector("[id ^= 'comment'] .update-link", count: 1)
+    expect(page).to have_selector("[id ^= 'comment'] .delete-link", count: 1)
   end
 
   it "user can edit comment" do
     login_as(@user)
     visit feed_path
-    find("[id ^= 'comment'] .update-post-link").click
+    find("[id ^= 'comment'] .update-link").click
     fill_in "comment_content", with: "Edited comment"
     click_button "Edit comment"
     expect(page).to have_text("Edited comment")
@@ -51,7 +51,7 @@ RSpec.describe "Verify comments: ", type: :feature do
     login_as(@user)
     visit feed_path
     expect do
-      find("[id ^= 'comment'] .delete-post-link").click
+      find("[id ^= 'comment'] .delete-link").click
     end.to change { Comment.count }.by(-1)
     expect(page).not_to have_text("Comment#1")
     expect(page).not_to have_selector("[id ^= 'comment']")

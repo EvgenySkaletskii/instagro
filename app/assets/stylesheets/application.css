@@ -55,8 +55,8 @@
     max-width: 500px;
 } */
 
-.update-post-link,
-.delete-post-link {
+.update-link,
+.delete-link {
     text-decoration: none;
     color: black;
 }

@@ -19,24 +19,24 @@ RSpec.describe "Feed page", type: :feature do
     expect(page).to have_text("Post#1")
     expect(page).to have_text("Post#2")
     expect(page).to have_text("Post#3")
-    expect(page).to have_selector(".update-post-link", count: 1)
-    expect(page).to have_selector(".delete-post-link", count: 1)
+    expect(page).to have_selector(".update-link", count: 1)
+    expect(page).to have_selector(".delete-link", count: 1)
   end
 
   it "displays all posts for manager (can update own post)" do
     login_as(@manager)
     visit feed_path
     expect(page).to have_selector(".posts [id ^= 'post']", count: 3)
-    expect(page).to have_selector(".update-post-link", count: 1)
-    expect(page).to have_selector(".delete-post-link", count: 1)
+    expect(page).to have_selector(".update-link", count: 1)
+    expect(page).to have_selector(".delete-link", count: 1)
   end
 
   it "displays all posts for admin (can update all posts)" do
     login_as(@admin)
     visit feed_path
     expect(page).to have_selector(".posts [id ^= 'post']", count: 3)
-    expect(page).to have_selector(".update-post-link", count: 3)
-    expect(page).to have_selector(".delete-post-link", count: 3)
+    expect(page).to have_selector(".update-link", count: 3)
+    expect(page).to have_selector(".delete-link", count: 3)
   end
 
   it "allows user to create a post" do
@@ -52,7 +52,7 @@ RSpec.describe "Feed page", type: :feature do
   it "allows user to update a post" do
     login_as(@member)
     visit feed_path
-    click_on class: "update-post-link"
+    click_on class: "update-link"
     fill_in "post_content", with: "Updated Post"
     click_on "Edit post"
     expect(page).to have_text("Post has been successfully updated!")
@@ -63,7 +63,7 @@ RSpec.describe "Feed page", type: :feature do
   it "allows user to delete a post" do
     login_as(@member)
     visit feed_path
-    click_on class: "delete-post-link"
+    click_on class: "delete-link"
     expect(page).to have_text("Post has been successfully deleted!")
     expect(page).to have_selector(".posts [id ^= 'post']", count: 2)
     expect(page).not_to have_text("Post#1")
