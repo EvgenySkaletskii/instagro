@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def create
-    @comment = current_user.comments.build(post_id: params[:post_id], content: params[:content])
+    @comment = current_user.comments.build(comment_params)
     if @comment.save
       redirect_to(request.referrer || feed_path)
     else
