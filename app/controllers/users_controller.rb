@@ -9,7 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @posts = @user.posts
-    @post = current_user.posts.build if user_signed_in?
+    @post = current_user.posts.build
+    @comment = current_user.comments.build
   end
 
   def edit
