@@ -1,0 +1,7 @@
+<div>
+  <% if user.avatar_url%>
+    <%= image_tag user.avatar_url(size.to_sym), alt: user.full_name, class: "me-3 avatar-#{size}"%>
+  <%else%>
+    <%= image_tag "default_avatar.png", alt: user.full_name, class: "me-3 rounded-circle avatar-#{size}"%>
+  <%end%>
+</div>

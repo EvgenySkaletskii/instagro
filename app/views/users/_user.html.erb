@@ -1,8 +1,6 @@
 <div id="user-<%= user.id%>" class="list-group-item mb-2 border rounded user-card" aria-current="true">
   <div class="d-flex mb-2">
-    <div>
-      <%= image_tag(gravatar_for(user, 50), alt: user.full_name, class: "me-3 rounded-circle")%>
-    </div>
+    <%= render "shared/avatar", user: user, size: "small"%>
     <div class="d-flex flex-column">
       <h6 class="mb-1"><%= link_to user.full_name || "No name", user, class: "simple-link" %></h5>
       <small><%= user.email %></small>
