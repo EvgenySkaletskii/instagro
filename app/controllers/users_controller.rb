@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :followers, :following]
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def index
@@ -28,7 +28,6 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @user = User.find(params[:id])
     @title = current_user == @user ? "Your followers:" : "Followers:"
     @users = @user.followers
     render "show_follows"
@@ -36,7 +35,6 @@ class UsersController < ApplicationController
 
   def following
     @title = current_user == @user ? "Your followings:" : "Followings:"
-    @user = User.find(params[:id])
     @users = @user.following
     render "show_follows"
   end
