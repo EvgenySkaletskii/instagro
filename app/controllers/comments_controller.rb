@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_comment, only: [:edit, :update, :destroy]
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def create
@@ -13,25 +14,31 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:id])
-    authorize @comment
   end
 
   def update
-    @comment = Comment.find(params[:id])
-    authorize @comment
-    @comment.update(content: params[:comment][:content])
-    redirect_to feed_path
+    if @comment.update(comment_params)
+      flash[:notice] = "Comment has been updated successfully"
+      redirect_to feed_path
+    else
+      flash[:alert] = "Content can't be blank"
+      redirect_to edit_post_path(@comment)
+    end
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-    authorize @comment
     @comment.destroy
     redirect_to(request.referrer || feed_path)
   end
 
+  private
+
+  def set_comment
+    @comment = Comment.find(params[:id])
+    authorize @comment
+  end
+
   def comment_params
-    params.permit(:content, :post_id)
+    params.require(:comment).permit(:content, :post_id)
   end
 end

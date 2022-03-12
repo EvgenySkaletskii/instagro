@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :followers, :following]
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def index
@@ -7,28 +8,26 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @posts = @user.posts
-    @post = current_user.posts.build if user_signed_in?
+    @post = current_user.posts.build
+    @comment = current_user.comments.build
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    if current_user.update(user_params)
+    if @user.update(user_params)
       flash[:notice] = "Profile has been successfully updated"
-      sign_in(current_user, :bypass => true)
-      redirect_to current_user
+      sign_in(@user, :bypass => true)
+      redirect_to @user
     else
       flash[:alert] = "Please fill all required fields with valid values"
-      redirect_to edit_user_path(current_user)
+      redirect_to edit_user_path(@user)
     end
   end
 
   def followers
-    @user = User.find(params[:id])
     @title = current_user == @user ? "Your followers:" : "Followers:"
     @users = @user.followers
     render "show_follows"
@@ -36,15 +35,18 @@ class UsersController < ApplicationController
 
   def following
     @title = current_user == @user ? "Your followings:" : "Followings:"
-    @user = User.find(params[:id])
     @users = @user.following
     render "show_follows"
   end
 
   private
 
+  def set_user
+    @user = User.find(params[:id])
+  end
+
   def user_params
-    params.require(:user).permit(:full_name, :email, :about, :password, :password_confirmation)
+    params.require(:user).permit(:full_name, :email, :about, :password, :password_confirmation, :avatar)
   end
 
   def record_not_found

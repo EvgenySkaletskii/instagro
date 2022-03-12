@@ -18,7 +18,7 @@ RSpec.describe "Verify comments: ", type: :feature do
       click_button "Comment"
     end.to change { Comment.count }.by(1)
     expect(page).to have_text("Comment#2")
-    expect(page).to have_selector("[id ^= 'comment']", count: 2)
+    expect(page).to have_selector("[id ^= 'comment-']", count: 2)
     expect(page).to have_selector("[id ^= 'comment'] .update-link", count: 2)
     expect(page).to have_selector("[id ^= 'comment'] .delete-link", count: 2)
   end
@@ -32,7 +32,7 @@ RSpec.describe "Verify comments: ", type: :feature do
       click_button "Comment"
     end.to change { Comment.count }.by(1)
     expect(page).to have_text("Comment#2")
-    expect(page).to have_selector("[id ^= 'comment']", count: 2)
+    expect(page).to have_selector("[id ^= 'comment-']", count: 2)
     expect(page).to have_selector("[id ^= 'comment'] .update-link", count: 1)
     expect(page).to have_selector("[id ^= 'comment'] .delete-link", count: 1)
   end
@@ -44,7 +44,7 @@ RSpec.describe "Verify comments: ", type: :feature do
     fill_in "comment_content", with: "Edited comment"
     click_button "Edit comment"
     expect(page).to have_text("Edited comment")
-    expect(page).to have_selector("[id ^= 'comment']", count: 1)
+    expect(page).to have_selector("[id ^= 'comment-']", count: 1)
   end
 
   it "user can delete comment" do
@@ -54,6 +54,6 @@ RSpec.describe "Verify comments: ", type: :feature do
       find("[id ^= 'comment'] .delete-link").click
     end.to change { Comment.count }.by(-1)
     expect(page).not_to have_text("Comment#1")
-    expect(page).not_to have_selector("[id ^= 'comment']")
+    expect(page).not_to have_selector("[id ^= 'comment-']")
   end
 end
